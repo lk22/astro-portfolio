@@ -1,0 +1,172 @@
+---
+import { Image } from '@astrojs/image/components';
+import localImage from '../../assets/images/leo.webp';
+import IconGroup from '../Icons/IconGroup.astro';
+
+const iconGroup = [
+    {
+        href: 'https://github.com/lk22',
+        icon: 'github-original',
+    },
+    {
+        href: 'https://www.facebook.com/leo.knudsen.9/',
+        icon: 'facebook-original',
+    },
+    {
+        href: 'https://dk.linkedin.com/in/leo-knudsen-21b6a19a',
+        icon: 'linkedin-original',
+    },
+    {
+        href: 'mailto: knudsenudvikling@gmail.com',
+        icon: 'inbox'
+    },
+    {
+        href: 'tel: +45 50 50 50 50',
+        icon: 'phone'
+    }
+]
+---
+
+<section class="introduction-hero container">
+    <div class="col-half image animate-fadeUp animate-delay-full">
+        <Image src={localImage} alt="leo knudsen" height={300} width={300} />
+    </div>
+    <div class="col-half text-intro">
+        <h1 class="text-gradient">Leo Knudsen</h1>
+        <p class="position">
+            <span class="icon">
+                <i class="lni lni-checkmark"></i>
+            </span>
+            <span>
+                Frontend developer
+            </span>
+        </p>
+        <p class="position">
+            <span class="icon">
+                <i class="lni lni-checkmark"></i>
+            </span>
+            <span>
+                Ui Designer
+            </span>
+        </p>
+        <p class="position">
+            <span class="icon">
+                <i class="lni lni-checkmark"></i>
+            </span>
+            <span>
+                Company owner
+            </span>
+        </p>
+        <IconGroup
+            hasLink={true} 
+            icons={iconGroup} />
+    </div>
+</section>
+
+<style>
+    .introduction-hero {
+        display: flex;
+        justify-content: center;
+        margin-block: 5rem;
+        height: 500px;
+        margin: auto;
+        padding-block: 3rem;
+    }
+
+    .col-half {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeUp 1s forwards;
+        animation-delay: 0.5s;
+        position: relative;
+    }
+
+    .col-half.image img {
+        border-radius: 30px 120px 30px 120px;
+        box-shadow: -5px 0px 20px 0px #3e7a5c;
+    }
+
+    .col-half.image img::after {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        background: linear-gradient(125deg, dodgerblue, green);
+        left: 0;
+        top: 0;
+    }
+
+    .col-half.text-intro {
+        display: flex;
+        flex-direction: column;
+        padding-block: 2rem;
+        color: #f9f9f9;
+        background: #3e7a5c;
+        padding-inline: 10rem 0rem;
+        border-radius: 20px;
+    }
+    
+    .text-intro p {
+        font-size: 20px;
+    }
+
+    .text-intro p.position {
+        display: flex;
+        align-items: center;
+        margin-block: 0rem;
+    }
+
+    p.position .icon {
+        margin-right: 0.5rem;
+    }
+
+    .introduction-hero h1 {
+        margin-block: 0;
+        font-weight: 600
+    }
+
+    .introduction-hero .col-half.image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .introduction-hero .col-half.text-intro {
+        z-index: 1;
+    }
+
+    @media (max-width: 575px) {
+        .col-half.text-intro {
+            padding-inline: 4rem;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .introduction-hero {
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .introduction-hero .col-half {
+            width: 100%;
+            border-radius: 0;
+            right: 0;
+            align-items: center;
+            padding-inline: 0;
+        }
+    }
+    
+    @media (min-width: 992px) {
+        .introduction-hero .col-half.image {
+            width: 35%;
+        }
+        
+        .introduction-hero .col-half.text-intro {
+            width: 65%;
+            right: 150px;
+        }
+    }
+</style>

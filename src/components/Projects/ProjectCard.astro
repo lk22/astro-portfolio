@@ -1,0 +1,52 @@
+---
+import { Image } from '@astrojs/image/components';
+const {title, image, description, url} = Astro.props;
+---
+
+<div class=`project-card project-${title}`>
+    <div class="project-image">
+        <Image src={image} alt={title} height={250}>
+    </div>
+    <div class="project-title">
+        <h3>{title}</h3>
+        <div class="project-description">
+            <p>{description}</p>
+        </div>
+        <div class="project-link">
+            <a href={url} target="_blank" class="btn btn-dark">Se case</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .project-card {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 5rem;
+    }
+
+    .project-card:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .project-link {
+        margin-top: 30px;
+    }
+
+    @media (max-width: 991px) {
+        .project-card {
+            flex-direction: column;
+            gap: 0;
+            justify-content: flex-start;
+        }
+
+        .project-card:nth-child(even) {
+            flex-direction: column;
+        }
+    }
+    @media (min-width: 992px) {
+        .project-card {
+            align-items: center;
+        }
+    }
+</style>

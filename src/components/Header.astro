@@ -1,0 +1,52 @@
+---
+import Logo from './Header/Logo.astro'
+import Navigation from './header/Navigation.astro'
+
+---
+
+<header>
+    <div class="container">
+        <section class="logo">
+            <Logo />
+        </section>
+        <section class="navigation">
+            <Navigation />
+        </section>
+    </div>
+</header>
+
+<style>
+    header {    
+        padding: 1rem 0;
+        height: 60px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 3;
+        background: #1a1a1a;
+    }
+
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    header .logo p a strong {
+        color: #f9f9f9;
+    }
+
+    @media (max-width: 1139px) {
+        header .container {
+            padding-inline: 20px;
+        }
+    }
+
+</style>
+
+<script>
+    
+
+</script>

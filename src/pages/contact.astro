@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Image } from '@astrojs/image/components';
+import localImage from '/leo.webp';
+---
+
+<Layout title="Leo Knudsen | contact">
+    <section class="contact-section animate-fadeUp animate-delay-half">
+        <h1>Lets get in touch</h1>
+        <div class="flex-container">
+            <div class="iamge col-half">
+                <Image src={import('../assets/images/leo.webp')} alt="leo knudsen" height={300} width={300} />
+            </div>
+            <div class="col-half">
+                <h3>Want to hire me for a project, or maybe just need help with any programming task?</h3>
+                <p>Lets get in touch and introduce me to you're task or idea then lets take it from there</p>
+                <p>E-mail: Knudsenudvikling@gmail.com</p>
+                <p>Phone: +45 27 45 94 67</p>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    section.contact-section img {
+        border-radius: 30px 120px 30px 120px;
+        box-shadow: -5px 0px 20px 0px #3e7a5c;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .col-half {
+        width: 50%;
+    }
+
+    @media (max-width: 1139px) {
+        section.contact-section {
+            padding-inline: 20px !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            text-align: center;
+        }
+        .col-half {
+            width: 100%;
+            text-align: center;
+        }
+
+        .flex-container {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>

@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ProjectCard from '../components/Projects/ProjectCard.astro';
+---
+
+<Layout title="Leo Knudsen | projects">
+    <section class="projects-section animate-fadeUp animate-delay-half">
+        <h1>Projects</h1>
+        <ProjectCard 
+			url="https://danishxboxleague.dk"
+			image={import('../assets/images/DXL.png')}
+			title="Danish Xbox League"
+			description="Denmark's only E-sport Gaming association for XBOX gamers, their website is built in WordPress CMS with Elementor Page Builder, they have customized modules for handling their members and events with registration system"
+		/>
+		<ProjectCard 
+			url="https://servicexperten.dk"
+			image={import('../assets/images/SERVICEXPERTEN.png')}
+			title="Service Xperten"
+			description="A service company that specializes in cleaning everything from windows to roofs and facade restoration"
+		/>
+    </section>
+	<section class="section-get-in-touch">
+		<h3>Lets get in touch</h3>
+		<p>Do you have a project you want to get started on Or do you just want to say hi? <br> Feel free to contact me</p>
+		<p style="margin-top: 2rem;">
+			<a href="/contact" class="btn btn-dark">Contact me</a>
+		</p>
+	</section>
+</Layout>
+
+<style>
+	@media (max-width: 1139px) {
+		section {
+			padding: 0 1.5rem;
+		}
+	}
+</style>

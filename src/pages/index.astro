@@ -1,81 +1,81 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
----
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
+import IntroductionHero from '../components/Hero/IntroductionHero.astro';
+import ProjectCard from '../components/Projects/ProjectCard.astro';
+---
+<Layout title="Leo knudsen | forside">
+	<IntroductionHero />
+	<section class="about-section animate-fadeUp animate-delay-full">
+		<h2 class="text-gradient">
+			Who am i and what can i help you with?
+		</h2>
+		<p>Im a 30 year old passionated gamer and Web Developer with around 10 years of experience</p>
+		<p>Im currently working a full time possition in a Danish Digital Agency “Webto ApS” as a frontend developer, where i work with both small, medium, large scaled websites and applications</p>
+		<p>besides that im owner of Knudsen Design & Udvikling where i work part time as owner and developer</p>
+		<p>Im also contributing to Danish Association Life where my development skillsets are put to need</p>
+		<p>You can read more about me <a href="/about">here</a></p>
+		<br>
+	</section>
+	<section class="projects-section animate-fadeUp animate-delay-full">
+
+		<h2>My latest projects</h2>
+		<div class="projects">
+			<ProjectCard 
+				url="https://danishxboxleague.dk"
+				image={import('../assets/images/DXL.png')}
+				title="Danish Xbox League"
+				description="Denmark's only E-sport Gaming association for XBOX gamers, their website is built in WordPress CMS with Elementor Page Builder, they have customized modules for handling their members and events with registration system"
 			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
+			<ProjectCard 
+				url="https://servicexperten.dk"
+				image={import('../assets/images/SERVICEXPERTEN.png')}
+				title="Service Xperten"
+				description="A service company that specializes in cleaning everything from windows to roofs and facade restoration"
 			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+		</div>
+		<div class="text-center">
+			<a href="/projects" class="btn btn-dark text-white">Go to projects</a>
+		</div>
+		<section class="section-get-in-touch">
+			<h3>Lets get in touch</h3>
+			<p>Do you have a project you want to get started on? Or do you just want to say hi? <br> Feel free to contact me</p>
+			<p style="margin-top: 2rem;">
+				<a href="/contact" class="btn btn-dark">Contact me</a>
+			</p>
+		</section>
+	</section>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
+	.about-section {
+		padding-inline: 0;
+		padding-block: 8rem 2rem;
+		padding: 8rem 0rem;
 	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
+	.projects-section {
+		border-radius: 1rem;
+		margin-block: 0rem 10rem;
+		background-color: #0000000;
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
+
+	@media (max-width: 1139px) {
+		.projects-section {
+			padding: 5rem;
+		}
+
+		.about-section {
+			padding-inline: 2rem;
+		}
 	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
+
+	@media (max-width: 991px) {
+		.projects-section h2 {
+			font-size: 2.5rem;
+		}
+		.projects-section {
+			margin-block: 5rem 2rem;
+			padding: 0rem 1.5rem;
+		}
 	}
 </style>

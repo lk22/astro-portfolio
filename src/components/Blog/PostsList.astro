@@ -1,0 +1,21 @@
+---
+    export interface PostFrontmatterInterface {
+        title: string;
+        date: string;
+        slug: string;
+        content: string;
+        image?: string;
+    }
+    const posts = await Astro.glob<PostFrontmatterInterface>('../../pages/Posts/*.md');
+---
+
+<section class="posts-content">
+    {posts.slice(0, 3).map((post) => (
+        <div class="post">
+            <h2 class="post-title">{post.frontmatter.title}</h2>
+            <p class="post-content">{post.frontmatter.description}</p>
+            <p class="post-date">{post.frontmatter.date}</p>
+            <a href={`/posts/${post.frontmatter.slug}`}>Read more</a>
+        </div>
+    ))}
+</section>

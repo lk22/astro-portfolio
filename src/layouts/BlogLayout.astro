@@ -1,11 +1,13 @@
 ---
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer/Footer.astro'
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer/Footer.astro';
+import GetInTouch from '../components/Footer/GetInTouch.astro';
+
 export interface Props {
 	title: string;
 }
 
-const { title } = Astro.props;
+const { title, frontmatter } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -13,18 +15,28 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<link rel="stylesheet" href="./node_modules/lineicons/web-font/lineicons.css" />
+        <link rel="stylesheet" href="./node_modules/lineicons/web-font/lineicons.css" />
 	</head>
 	<body>
 		<Header />
 		<main>
+            <div class="post-exerpt">
+                <h1 class="text-gradient">{frontmatter.title}</h1>
+                <div class="author">
+                    <span>Author: <strong>{frontmatter.author}</strong></span>
+                </div>
+                <div class="post-date">
+                    <span>Posted at: <strong>{frontmatter.date}</strong></span>
+                </div>
+            </div>
 			<slot />
+            <GetInTouch />
+            <Footer />
 		</main>
-		<Footer />
 	</body>
 </html>
 <style is:global>
@@ -69,6 +81,10 @@ const { title } = Astro.props;
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
+
+    pre code span.line {
+        padding-block: 10px;
+    }
 	h1 {
 		font-size: 3rem;
 	}

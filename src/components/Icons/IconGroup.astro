@@ -1,0 +1,37 @@
+---
+    const {icons, hasLink = true} = Astro.props
+---
+
+<ul class="icon-list">
+    {icons.map((icon) => (
+        <li class="icon-item">
+            {hasLink ? (
+                <a href={icon.href} target="_blank">
+                    <i class={`lni lni-${icon.icon}`}></i>    
+                </a>
+            ) : (
+                <i class={`lni lni-${icon.icon}`}></i>
+            )}
+        </li>
+    ))}
+</ul>
+
+<style>
+    .icon-list {
+        display: flex;
+        list-style: none;
+        margin-inline: 0;
+        margin-block: 20px;
+        padding: 0;
+    }
+
+    .icon-list .icon-item {
+        margin-right: 1rem;
+    }
+
+    .lni {
+        font-size: 2rem;
+        color: #f9f9f9;
+        transition: ease-in-out 0.2s all;
+    }
+</style>
