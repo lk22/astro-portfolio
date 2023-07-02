@@ -194,4 +194,18 @@ const { title, frontmatter } = Astro.props
 			max-width: 100%;
 		}
 	}
+
+	@media (prefers-color-scheme: light) {
+		html, body, main {
+			background: #f9f9f9 !important;
+			color: #1a1a1a !important;
+		}
+
+		a.btn-dark {
+			color: #3e7a5c !important;
+		}
+		a.btn-dark:hover {
+			color: #f9f9f9 !important;
+		}
+	}
 </style>

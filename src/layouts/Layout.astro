@@ -6,6 +6,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
 ---
 
 <!DOCTYPE html>
@@ -38,10 +39,7 @@ const { title } = Astro.props;
 			opacity: 1;
 			transform: translateY(0%);
 		}
-	}
-	main {
-		margin: 150px auto;
-	}
+	}	
 	:root {
 		--accent: 124, 58, 237;
 		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
@@ -49,13 +47,41 @@ const { title } = Astro.props;
 	html {
 		font-family: system-ui, sans-serif;
 		background-color: #1a1a1a !important;
+		transition: all 0.3s ease-in-out;
 	}
+/* 
+	html[data-theme="dark"] {
+		background-color: #1a1a1a !important;
+	}
+
+	html[data-theme="light"] {
+		background-color: #f9f9f9 !important;
+	}
+
+	html[dark-theme="light"] body {
+		background-color: #f9f9f9 !important;
+		color: #2a2a2a !important;
+	} */
 	body {
 		margin: 0;
 		padding: 0;
 		font-family: "Poppins", sans-serif;
-		color: #f9f9f9;
-		background-color: #1a1a1a;
+		transition: all 0.3s ease-in-out;
+	}
+/* 
+	html[data-theme="dark"] body {
+		background-color: #1a1a1a !important;
+		color: #f9f9f9 !important;
+	}
+
+	html[data-theme="light"] body {
+		background-color: #f9f9f9 !important;
+		color: #2a2a2a !important;
+	} */
+
+	main {
+		margin: 150px auto;
+		transition: all 0.3s ease-in-out;
 	}
 
 	img {
@@ -87,7 +113,7 @@ const { title } = Astro.props;
 
 	a {
 		text-decoration: none;
-		color: #00ff80;
+		color: #4d795e;
 		font-weight: 600;
 	}
 
@@ -125,6 +151,11 @@ const { title } = Astro.props;
 		background: #2a2a2a;
 		color: #f9f9f9;
 	}
+
+	/* html[data-theme="light"] .btn {
+		border-color: #3e7a5c;
+		color: #2a2a2a;
+	} */
 
 	.animate-fadeUp {
 		opacity: 0;
@@ -178,4 +209,47 @@ const { title } = Astro.props;
 			max-width: 100%;
 		}
 	}
+
+	/**
+		darkmode	
+	*/
+	@media (prefers-color-scheme: light) {
+		html, body, main {
+			background-color: #f9f9f9 !important;
+			color: #2a2a2a !important;
+		}
+
+		a.btn-dark {
+			color: #4d795e !important;
+		}
+
+		a.btn-dark:hover {
+			color: #f9f9f9 !important;
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		html, body, main {
+			background: #1a1a1a !important;
+			color: #f9f9f9 !important;
+		}
+
+		a.btn-dark {
+			color: #4d795e !important;
+		}
+
+		a.btn-dark:hover {
+			color: #f9f9f9 !important;
+		}
+	}
 </style>
+
+<script>
+const theme = window.localStorage.getItem('theme');
+
+if (theme === 'dark') {
+	document.documentElement.setAttribute('data-theme', 'dark');
+} else {
+	document.documentElement.setAttribute('data-theme', 'light');
+}
+</script>

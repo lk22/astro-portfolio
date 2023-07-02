@@ -47,6 +47,17 @@ import Navigation from './header/Navigation.astro'
 </style>
 
 <script>
-    
+    const theme_switch = document.querySelector('.theme-switch__button');
+    const html = document.querySelector('html');
+    theme_switch.addEventListener('click', () => {
+        // set data-theme attribute
+        if (html.getAttribute('data-theme') === 'dark') {
+            window.localStorage.setItem('theme', 'light')
+            html.setAttribute('data-theme', 'light');
+        } else {
+            window.localStorage.setItem('theme', 'light')
+            html.setAttribute('data-theme', 'dark');
+        }
+    });
 
 </script>
